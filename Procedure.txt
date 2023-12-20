@@ -102,15 +102,6 @@ Requirement already satisfied: numpy>=1.17.3; python_version >= "3.8" in /home/m
 
 
 
-####################################################################################################################################
-gcc -c maintest.cpp -o main.o -I/usr/include/python3.7m -I/usr/include/python3.7m -I/usr/include/opencv4 -Wno-unused-result -Wsign-compare -g -fstack-protector-strong -Wformat -Werror=format-security -DNDEBUG -g -fwrapv -O2 -Wall -std=c++11
-
-gcc main.o test9.o -o prog -I/usr/include/python3.7m -I/usr/include/python3.7m -Wno-unused-result -Wsign-compare -g -fstack-protector-strong -Wformat -Werror=format-security -DNDEBUG -g -fwrapv -O2 -Wall -lpython3.7m -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lstdc++
-
-gcc -c test9.c -o test9.o -I/usr/include/python3.7m -I /usr/lib/python3/dist-packages/numpy/core/include -I/usr/include/opencv4/opencv -I/usr/include/opencv4-Wno-unused-result -Wsign-compare -g   -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall
-
-
-
 
 
 
