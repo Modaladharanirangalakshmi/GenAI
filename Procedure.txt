@@ -1,0 +1,118 @@
+cd Public/
+ll
+python -m cython hello.pyx
+ll - .pyx generate  .c, .h files
+/usr/bin/python3.7m-config --cflags
+gcc -c hello.c -o hello.o <c flags>-add above output line start with -I
+gcc -c main.c -o main.o  <c flags>-add above output line start with -I
+THEN GENERATE Executable file
+
+//https://stackoverflow.com/questions/45419532/use-generated-header-file-from-cython
+
+gcc main.o hello.o -o <prog>  <c flags>-add above output line start with -I
+
+
+
+
+With Python2 we are getting result of hello world, but with python3 we are getting segmentation fault.Perhaps it is fault of python3.x :
+//https://stackoverflow.com/questions/55647555/calling-cython-function-from-c-code-raises-segmentation-fault
+
+
+
+
+
+python2.7 -m cython fib.pyx
+/usr/bin/python2.7-config --cflags
+
+gcc -c fib.c -o fib.o -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-W1mjrO/python2.7-2.7.18=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+
+gcc -c main.c -o main.o -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-W1mjrO/python2.7-2.7.18=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes
+
+gcc main.o fib.o -o prog -I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-W1mjrO/python2.7-2.7.18=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -lpython2.7
+
+
+
+
+
+
+modala@modala-HP-ProBook-440-G8-Notebook-PC:~/Public$ ./prog
+I am here 2
+I am here 3
+1
+1
+2
+3
+I am here 4
+modala@modala-HP-ProBook-440-G8-Notebook-PC:~/Public$ 
+
+
+
+
+###############################################################
+
+python3.7 -m cython fib.pyx
+/usr/bin/python3.7-config --cflags
+
+gcc -c fib.c -o fib.o -I/usr/include/python3.7m -I/usr/include/python3.7m  -Wno-unused-result -Wsign-compare -g   -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall
+
+gcc -c main.c -o main.o -I/usr/include/python3.7m -I/usr/include/python3.7m  -Wno-unused-result -Wsign-compare -g   -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall
+
+gcc main.o fib.o -o prog -I/usr/include/python3.7m -I/usr/include/python3.7m  -Wno-unused-result -Wsign-compare -g   -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -lpython3.7m
+
+
+modala@modala-HP-ProBook-440-G8-Notebook-PC:~/Public$ ./prog
+I am here 1
+1
+1
+2
+3
+I am here 2
+modala@modala-HP-ProBook-440-G8-Notebook-PC:~/Public$ 
+
+###############################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+pip install opencv-python
+Requirement already satisfied: opencv-python in /home/modala/.local/lib/python3.8/site-packages (4.8.1.78)
+Requirement already satisfied: numpy>=1.17.3; python_version >= "3.8" in /home/modala/.local/lib/python3.8/site-packages (from opencv-python) (1.24.4)
+###########################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################################################################
+gcc -c maintest.cpp -o main.o -I/usr/include/python3.7m -I/usr/include/python3.7m -I/usr/include/opencv4 -Wno-unused-result -Wsign-compare -g -fstack-protector-strong -Wformat -Werror=format-security -DNDEBUG -g -fwrapv -O2 -Wall -std=c++11
+
+gcc main.o test9.o -o prog -I/usr/include/python3.7m -I/usr/include/python3.7m -Wno-unused-result -Wsign-compare -g -fstack-protector-strong -Wformat -Werror=format-security -DNDEBUG -g -fwrapv -O2 -Wall -lpython3.7m -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lstdc++
+
+gcc -c test9.c -o test9.o -I/usr/include/python3.7m -I /usr/lib/python3/dist-packages/numpy/core/include -I/usr/include/opencv4/opencv -I/usr/include/opencv4-Wno-unused-result -Wsign-compare -g   -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall
+
+
+
+
+
+
+
+
